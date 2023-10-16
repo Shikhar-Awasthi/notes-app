@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+.App{
+  background-color: yellow;
+  margin: 0;
+  padding: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.notes-list{
   min-height: 100vh;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 10px 15px;
+}
+.note{
+  background-color: aqua;
+  border-radius: 5px;
+  padding: 10px;
+  height: 170px;
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+.note-footer{
+  display: flex;
+  justify-content: space-between;
+}
+.note-add{
+  background-color: green;
+}
+.note-add textarea{
+  height: 100%;
+  border: none;
+  background-color: green;
+  color: white;
+  resize: none;
+}
+.note-add textarea:focus{
+  outline: none;
+}
+.note-add textarea::placeholder{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.save-button{
+  width: 70px;
+  background-color: antiquewhite;
+  border-radius: 20%;
+  display: block;
+  margin-left: auto;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note-add .note-footer{
+  display: flex;
+  align-items: baseline;
+}
+.note-footer span{
+  color: #fff;
+}
+.icon {
+  cursor: pointer;
 }
