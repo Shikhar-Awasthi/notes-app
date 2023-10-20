@@ -1,5 +1,8 @@
+body {
+  font-family: 'JetBrains Mono Variable', sans-serif;
+}
 .App{
-  background-color: yellow;
+  background-color: #F4CE14;
   margin: 0;
   padding: 0;
 }
@@ -12,9 +15,10 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 10px 15px;
+  margin-top: 20px;
 }
 .note{
-  background-color: aqua;
+  background-color: #FF7676;
   border-radius: 5px;
   padding: 10px;
   height: 170px;
@@ -23,17 +27,23 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.note p{
+  margin-top: 0;
+}
 .note-footer{
   display: flex;
   justify-content: space-between;
+  font-size: x-small;
+  margin-bottom: 0;
 }
 .note-add{
-  background-color: green;
+  background-color: #495E57;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .note-add textarea{
   height: 100%;
   border: none;
-  background-color: green;
+  background-color: #495E57;
   color: white;
   resize: none;
 }
@@ -44,11 +54,7 @@
   color: white;
 }
 .save-button{
-  width: 70px;
-  background-color: antiquewhite;
-  border-radius: 20%;
-  display: block;
-  margin-left: auto;
+  fill: #fff;
 }
 .note-add .note-footer{
   display: flex;
@@ -56,7 +62,35 @@
 }
 .note-footer span{
   color: #fff;
+  font-size: x-small;
 }
 .icon {
   cursor: pointer;
+}
+.search-container{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #45474B;
+  border-radius: 10px
+}
+.search svg{
+  fill: #fff;
+  padding: 0px 2px 1px 3px;
+}
+.search input{
+  height: 30px;
+  border-radius: 0 10px 10px 0;
+  width: 250px;
+  border-style: none;
+  padding-left: 10px;
+}
+.search input:focus{
+  outline: none;
+  border: none;
 }
