@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdSave } from "react-icons/md";
+import NoteContext from "../NoteContext";
 
-function AddNote({ note, setNote, addNote }) {
+function AddNote() {
+  const { note, setNote, addNote } = useContext(NoteContext);
   return (
     <div className="note note-add">
       <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="Write a note"></textarea>

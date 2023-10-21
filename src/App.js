@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
-import NotesList from "./Components/NotesList";
 import Search from "./Components/Search";
 import '@fontsource-variable/jetbrains-mono';
+import NotesList from "./Components/NotesList";
+import NoteContext from "./NoteContext";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -19,6 +20,14 @@ function App() {
   const deleteNote = (id) => {
     setNotes(pre => pre.filter(p => p.id !== id));
   }
+  const updateNote = (id, edited) => {
+    /* const _notes = Array.from(notes);
+    const index = _notes.findIndex(n => n.id === id);
+    _notes[index].text = edited;
+    setNotes(_notes); */
+    setNotes(pre => pre.map(p => p.id === id ? {...p, text: edited} : p))
+  };
+  const value = useMemo(() => ({notes, setNotes, note, setNote, search, setSearch, addNote, deleteNote, updateNote}), [notes, setNotes, note, setNote, search, setSearch, addNote, deleteNote, updateNote]);
   useEffect(() => {
     if(notes.length > 0)
     localStorage.setItem("notes-app", JSON.stringify(notes));
@@ -30,8 +39,10 @@ function App() {
 
   return (
     <div className="App">
-      <Search search={search} setSearch={setSearch} />
-      <NotesList notes={notes} note={note} addNote={addNote} search={search} deleteNote={deleteNote} setNote={setNote} />
+      <NoteContext.Provider value={value}>
+        <Search />
+        <NotesList />
+      </NoteContext.Provider>
     </div>
   );
 }
