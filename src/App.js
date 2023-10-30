@@ -4,6 +4,7 @@ import Search from "./Components/Search";
 import '@fontsource-variable/jetbrains-mono';
 import NotesList from "./Components/NotesList";
 import NoteContext from "./NoteContext";
+import axios from "axios";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -33,8 +34,11 @@ function App() {
     localStorage.setItem("notes-app", JSON.stringify(notes));
   }, [notes]);
   useEffect(() => {
-    const n = localStorage.getItem("notes-app");
-    if(n) setNotes(JSON.parse(n));
+    /* const n = localStorage.getItem("notes-app");
+    if(n) setNotes(JSON.parse(n)); */
+    axios.get("http://localhost:2710/notes").then(response => {
+      setNotes(response.data);
+    }).catch(_ => {});
   }, []);
 
   return (

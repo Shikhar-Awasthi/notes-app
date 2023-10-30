@@ -5,7 +5,6 @@ import NoteContext from "../NoteContext";
 
 function NotesList() {
   const { notes, note, addNote, search, setNote, deleteNote } = useContext(NoteContext);
-  console.log(notes);
   return (
     <div className="notes-list">
       {notes
