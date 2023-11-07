@@ -18,8 +18,9 @@ function App() {
       setNote("");
     }
   }
-  const deleteNote = (id) => {
-    setNotes(pre => pre.filter(p => p.id !== id));
+  const deleteNote = (id) => {  
+    axios.delete(`/notes/${id}`).then(_ => setNotes(pre => pre.filter(p => p.id !== id)))
+    .catch(_ => console.error(_));
   }
   const updateNote = (id, edited) => {
     /* const _notes = Array.from(notes);
@@ -36,9 +37,9 @@ function App() {
   useEffect(() => {
     /* const n = localStorage.getItem("notes-app");
     if(n) setNotes(JSON.parse(n)); */
-    axios.get("http://localhost:2710/notes").then(response => {
+    axios.get("/notes").then(response => {
       setNotes(response.data);
-    }).catch(_ => {});
+    }).catch(e => console.log(e));
   }, []);
 
   return (
